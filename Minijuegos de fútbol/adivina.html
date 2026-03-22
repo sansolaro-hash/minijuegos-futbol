@@ -1,0 +1,55 @@
+<DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Adivina el Equipo</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<h1>Adivina el Equipo</h1>
+
+<p id="progreso"></p>
+
+<h3>Elegí dificultad</h3>
+
+<button onclick="seleccionarDificultad('facil')">
+🟢 Fácil
+</button>
+
+<button onclick="seleccionarDificultad('medio')">
+🟡 Medio
+</button>
+
+<button onclick="seleccionarDificultad('dificil')">
+🔴 Difícil
+</button>
+
+<br><br>
+
+<img id="escudo" width="200">
+
+<br><br>
+
+<button id="op1"></button>
+<button id="op2"></button>
+<button id="op3"></button>
+<button id="op4"></button>
+<button id="op5"></button>
+<button id="op6"></button>
+
+<p id="resultado"></p>
+<p id="progreso"></p>
+<p id="tiempo"></p>
+
+<button id="reiniciar" style="display:none">Jugar otra vez</button>
+
+<a href="index.html" class="volver">⬅️ Volver al menú</a>
+
+<script src="js/adivina.js"></script>
+
+</body>
+</html>
