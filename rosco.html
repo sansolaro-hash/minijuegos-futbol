@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rosco Pasapalabra Futbolero</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2c3e50">
+
+</head>
+
+<body>
+  <h1>Pasapalabra Futbolero ⚽🔵</h1>
+
+  <p id="puntaje">
+Aciertos: 0
+</p>
+  <div id="rosco"></div>
+
+  <div id="pregunta">Haz clic en una letra para comenzar</div>
+  <input type="text" id="respuesta" placeholder="Tu respuesta...">
+  <button id="comprobar">Comprobar</button>
+
+  <script src="js/rosco.js"></script>
+
+  <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+</body>
+</html>
