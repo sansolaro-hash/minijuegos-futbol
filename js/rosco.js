@@ -36,10 +36,28 @@ const preguntas = {
     const pregunta = document.getElementById("pregunta");
     const respuesta = document.getElementById("respuesta");
     const comprobar = document.getElementById("comprobar");
+    const sonidoCorrecto =
+    new Audio("sonidos/correcto.mp3");
+
+    const sonidoIncorrecto =
+    new Audio("sonidos/incorrecto.mp3");
+
+    const sonidoTiempo =
+    new Audio("sonidos/final.mp3");
 
     let letraActual = null;
     let intervalo;
     let aciertos = 0;
+    let errores = 0;
+    let tiempoRestante = 0;
+    let tiempoIniciado = false;
+    let temporizador;
+    
+    const tiempoTexto =
+    document.getElementById("tiempo");
+
+    const selectorDificultad =
+    document.getElementById("dificultad");
 
     // Colocar las letras en círculo (A arriba del todo)
     const radio =
@@ -75,8 +93,19 @@ const preguntas = {
 
     // Comprobar respuesta
     comprobar.onclick = () => {
+
+      if(!tiempoIniciado){
+
+      iniciarTemporizador();
+
+      tiempoIniciado = true;
+
+}
       if (!letraActual || !preguntas[letraActual]) return;
       const input = respuesta.value.trim().toLowerCase();
+
+      if(input === "") return;
+
       const correcta = preguntas[letraActual].resp.toLowerCase();
 
       const letraDiv = [...document.getElementsByClassName("letra")]
@@ -84,25 +113,91 @@ const preguntas = {
 
       if (input === correcta) {
 
-        aciertos++;
+      sonidoCorrecto.play();
 
-        document.getElementById("puntaje").textContent =
-        "Aciertos: " + aciertos;
-        letraDiv.classList.add("correcta");
-        pregunta.textContent = "¡Correcto! ✅";
-      } else {
-        letraDiv.classList.add("incorrecta");
-        pregunta.textContent = "Incorrecto ❌, era: " + correcta;
-      }
+      aciertos++;
+
+      // quitar amarillo si lo tenía
+      letraDiv.classList.remove("pasapalabra");
+
+      letraDiv.classList.add("correcta");
+
+      pregunta.textContent = "¡Correcto! ✅";
+
+} else {
+
+  sonidoIncorrecto.play();
+      // quitar amarillo si lo tenía
+      errores++;
+
+      letraDiv.classList.remove("pasapalabra");
+
+      letraDiv.classList.add("incorrecta");
+
+      pregunta.textContent =
+      "Incorrecto ❌, era: " + correcta;
+
+}
       respuesta.value = "";
-    };
 
-    siguienteLetra();
+      setTimeout(() => {
+      siguienteLetra();
+      }, 800);
+
+      const btnPasapalabra =
+document.getElementById("pasapalabra");
+
+btnPasapalabra.onclick = () => {
+
+if (!letraActual) return;
+
+const letraDiv =
+[...document.getElementsByClassName("letra")]
+.find(el => el.textContent === letraActual);
+
+if(
+letraDiv.classList.contains("correcta") ||
+letraDiv.classList.contains("incorrecta")
+){
+return;
+}
+
+letraDiv.classList.add("pasapalabra");
+
+respuesta.value = "";
+
+siguienteLetra();
+
+};
+
+}
+
+respuesta.addEventListener("keypress", function(event){
+
+if(event.key === "Enter"){
+
+if(!letraActual) return;
+
+comprobar.click();
+
+}
+
+});
+
+    letraActual = letras[0];
+
+    let primeraLetra =
+    [...document.getElementsByClassName("letra")]
+    .find(el => el.textContent === letraActual);
+
+    primeraLetra.classList.add("activa");
+
+    pregunta.textContent =
+    preguntas[letraActual].def;
 
     function siguienteLetra(){
 
-let index =
-letras.indexOf(letraActual);
+let index = letras.indexOf(letraActual);
 
 for(let i=1; i<=letras.length; i++){
 
@@ -113,18 +208,344 @@ let letraDiv =
 [...document.getElementsByClassName("letra")]
 .find(el => el.textContent === siguiente);
 
+// SOLO saltea correctas e incorrectas
+// PERO vuelve a las amarillas
+
 if(!letraDiv.classList.contains("correcta") &&
    !letraDiv.classList.contains("incorrecta")){
 
+// quitar activa anterior
+document.querySelectorAll(".letra")
+.forEach(l => l.classList.remove("activa"));
+
 letraActual = siguiente;
+
+// marcar nueva activa
+let nuevaLetraDiv =
+[...document.getElementsByClassName("letra")]
+.find(el => el.textContent === letraActual);
+
+nuevaLetraDiv.classList.add("activa");
 
 pregunta.textContent =
 preguntas[siguiente].def;
 
-break;
+return;
 
 }
 
 }
+
+// Si llega acá → terminó el juego
+clearInterval(temporizador);
+
+guardarRecord();
+
+actualizarEstadisticas();
+
+pregunta.textContent =
+"🎉 ¡Rosco terminado! 🎉 Aciertos: "
++ aciertos +
+" | Errores: " +
+errores;
+
+mostrarMedalla();
+
+respuesta.disabled = true;
+
+document.getElementById("reiniciar").style.display = "block";
+
+}
+
+const reiniciar =
+document.getElementById("reiniciar");
+
+reiniciar.onclick = () => {
+
+location.reload();
+
+};
+
+function configurarTiempo(){
+
+let dificultad =
+selectorDificultad.value;
+
+if(dificultad === "facil"){
+
+tiempoRestante = 250;
+
+}
+
+if(dificultad === "medio"){
+
+tiempoRestante = 200;
+
+}
+
+if(dificultad === "dificil"){
+
+tiempoRestante = 150;
+
+}
+
+if(dificultad === "extremo"){
+
+tiempoRestante = 100;
+
+}
+
+tiempoTexto.textContent =
+"Tiempo: " + tiempoRestante;
+
+}
+
+function iniciarTemporizador(){
+
+configurarTiempo();
+
+temporizador = setInterval(() => {
+
+tiempoRestante--;
+
+tiempoTexto.textContent =
+"Tiempo: " + tiempoRestante;
+
+if(tiempoRestante <= 0){
+
+clearInterval(temporizador);
+
+finalizarPorTiempo();
+
+}
+
+}, 1000);
+
+}
+
+function finalizarPorTiempo(){
+
+  sonidoTiempo.play();
+
+  mostrarMedalla();
+  
+pregunta.textContent =
+"⏰ ¡Tiempo terminado! Aciertos: "
++ aciertos +
+" | Errores: "
++ errores;
+
+respuesta.disabled = true;
+
+document.getElementById("reiniciar").style.display = "block";
+
+}
+
+selectorDificultad.addEventListener(
+"change",
+() => {
+
+configurarTiempo();
+
+cargarRecord();
+
+}
+);
+
+configurarTiempo();
+
+const textoRecord =
+document.getElementById("record");
+
+function cargarRecord(){
+
+let dificultad =
+selectorDificultad.value;
+
+let recordGuardado =
+localStorage.getItem("record_" + dificultad);
+
+if(recordGuardado === null){
+
+recordGuardado = 0;
+
+}
+
+textoRecord.textContent =
+"🏆 Récord: " + recordGuardado;
+
+}
+
+function guardarRecord(){
+
+let dificultad =
+selectorDificultad.value;
+
+let recordActual =
+localStorage.getItem("record_" + dificultad);
+
+if(recordActual === null){
+
+recordActual = 0;
+
+}
+
+if(aciertos > recordActual){
+
+localStorage.setItem(
+"record_" + dificultad,
+aciertos
+);
+
+textoRecord.textContent =
+"🏆 Récord: " + aciertos;
+
+pregunta.textContent +=
+" 🏆 ¡Nuevo récord!";
+
+}
+
+}
+
+configurarTiempo();
+cargarRecord();
+
+function cargarEstadisticas(){
+
+let partidas =
+localStorage.getItem("partidas");
+
+let aciertosTotales =
+localStorage.getItem("aciertosTotales");
+
+let erroresTotales =
+localStorage.getItem("erroresTotales");
+
+if(partidas === null){
+
+partidas = 0;
+aciertosTotales = 0;
+erroresTotales = 0;
+
+}
+
+document.getElementById("partidas")
+.textContent =
+"🎮 Partidas: " + partidas;
+
+document.getElementById("aciertosTotales")
+.textContent =
+"✅ Aciertos totales: " + aciertosTotales;
+
+document.getElementById("erroresTotales")
+.textContent =
+"❌ Errores totales: " + erroresTotales;
+
+let promedio = 0;
+
+if(partidas > 0){
+
+promedio =
+(aciertosTotales / partidas)
+.toFixed(1);
+
+}
+
+document.getElementById("promedio")
+.textContent =
+"📈 Promedio aciertos: " + promedio;
+
+}
+
+function actualizarEstadisticas(){
+
+let partidas =
+localStorage.getItem("partidas");
+
+let aciertosTotales =
+localStorage.getItem("aciertosTotales");
+
+let erroresTotales =
+localStorage.getItem("erroresTotales");
+
+if(partidas === null){
+
+partidas = 0;
+aciertosTotales = 0;
+erroresTotales = 0;
+
+}
+
+partidas =
+parseInt(partidas) + 1;
+
+aciertosTotales =
+parseInt(aciertosTotales) + aciertos;
+
+erroresTotales =
+parseInt(erroresTotales) + errores;
+
+localStorage.setItem(
+"partidas",
+partidas
+);
+
+localStorage.setItem(
+"aciertosTotales",
+aciertosTotales
+);
+
+localStorage.setItem(
+"erroresTotales",
+erroresTotales
+);
+
+cargarEstadisticas();
+
+}
+
+cargarEstadisticas();
+
+function mostrarMedalla(){
+
+let medallaTexto = "";
+
+if(aciertos >= 27){
+
+medallaTexto =
+"👑 ¡Rosco perfecto!";
+
+}
+
+else if(aciertos >= 25){
+
+medallaTexto =
+"🥇 Medalla de Oro";
+
+}
+
+else if(aciertos >= 23){
+
+medallaTexto =
+"🥈 Medalla de Plata";
+
+}
+
+else if(aciertos >= 20){
+
+medallaTexto =
+"🥉 Medalla de Bronce";
+
+}
+
+else{
+
+medallaTexto =
+"⚽ ¡Seguí practicando!";
+
+}
+
+document.getElementById("medalla")
+.textContent = medallaTexto;
 
 }
