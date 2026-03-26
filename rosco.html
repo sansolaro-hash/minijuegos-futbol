@@ -16,14 +16,45 @@
 <body>
   <h1>Pasapalabra Futbolero ⚽🔵</h1>
 
-  <p id="puntaje">
-Aciertos: 0
-</p>
+  <div id="configuracion">
+
+<label>Dificultad:</label>
+
+<select id="dificultad">
+  <option value="facil">Fácil (250s)</option>
+  <option value="medio">Medio (200s)</option>
+  <option value="dificil">Difícil (150s)</option>
+  <option value="extremo">Extremo (100s)</option>
+</select>
+
+<p id="tiempo">Tiempo: 0</p>
+<p id="record">🏆 Récord: 0</p>
+<div id="estadisticas">
+
+<p id="partidas">🎮 Partidas: 0</p>
+
+<p id="aciertosTotales">✅ Aciertos totales: 0</p>
+
+<p id="erroresTotales">❌ Errores totales: 0</p>
+
+<p id="promedio">📈 Promedio aciertos: 0</p>
+
+</div>
+
+<p id="medalla"></p>
+
+</div>
+ 
   <div id="rosco"></div>
 
   <div id="pregunta">Haz clic en una letra para comenzar</div>
   <input type="text" id="respuesta" placeholder="Tu respuesta...">
   <button id="comprobar">Comprobar</button>
+  <button id="pasapalabra">Pasapalabra ⏭️</button>
+  <button onclick="window.location.href='index.html'">
+  Volver al inicio 🏠
+  </button>
+  <button id="reiniciar">🔄 Jugar otra vez</button>
 
   <script src="js/rosco.js"></script>
 
