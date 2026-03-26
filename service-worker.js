@@ -8,6 +8,7 @@ const urlsToCache = [
   "preguntas.html",
   "rosco.html",
   "decision-var.html",
+  "bolos-futboleros.html",
 
   "css/style.css",
 
@@ -17,6 +18,7 @@ const urlsToCache = [
   "js/preguntas.js",
   "js/rosco.js",
   "js/desicion-var.js",
+  "js/bolos-futboleros.js",
 
   "img/arsenal.png",
   "img/astonvilla.png",
