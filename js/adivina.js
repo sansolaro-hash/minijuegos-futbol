@@ -35,7 +35,7 @@ const equipos = [
 {nombre: "Fiorentina", imagen: "img/fiorentina.png"},
 {nombre: "Atalanta", imagen: "img/atalanta.png"},
 {nombre:"Lille", imagen:"img/lille.png"},
-{nombre:"Sporting de Braga", imagen:"img/braga.png"}
+{nombre:"Sporting de Braga", imagen:"img/braga.png"},
 {nombre:"Al-Hilal", imagen:"img/alhilal.png"},
 {nombre:"Al-Nassr", imagen:"img/alnassr.png"},
 {nombre:"Boca Juniors", imagen:"img/bocajuniors.png"},
