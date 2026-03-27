@@ -60,7 +60,7 @@ const ligas = [
             {nombre:"Benfica", imagen:"img/benfica.png"},
             {nombre:"Porto", imagen:"img/porto.png"},
             {nombre:"Sporting de Lisboa", imagen:"img/sporting.png"},
-            {nombre:"Sporting de Braga", imagen:"img/braga.png"}
+            {nombre:"Sporting de Braga", imagen:"img/braga.png"},
             {nombre:"Vitoria de Guimaraes", imagen:"img/vitoria.png"}
         ]
     },
@@ -71,7 +71,7 @@ const ligas = [
             {nombre:"París Saint Germain", imagen:"img/psg.jpg"},
             {nombre:"Olympique de Marsella", imagen:"img/marsella.png"},
             {nombre:"Olympique de Lyon", imagen:"img/lyon.jpg"},
-            {nombre:"Lille", imagen:"img/lille.png"}
+            {nombre:"Lille", imagen:"img/lille.png"},
             {nombre:"Monaco", imagen:"img/monaco.png"},
             {nombre:"Stade de Rennes", imagen:"img/rennes.png"}
         ]   
