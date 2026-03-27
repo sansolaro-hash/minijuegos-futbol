@@ -134,6 +134,22 @@ let record = localStorage.getItem("record") || 0;
 document.getElementById("record").innerText =
 "🏆 Récord: " + record;
 
+const menuLigas = document.getElementById("menuLigas");
+const listaLigas = document.getElementById("listaLigas");
+const juego = document.getElementById("juego");
+
+ligas.forEach((liga, index) => {
+
+    const boton = document.createElement("button");
+
+    boton.innerText = liga.nombre;
+
+    boton.onclick = () => iniciarLiga(index);
+
+    listaLigas.appendChild(boton);
+
+});
+
 const ligaLogo =  document.getElementById("ligaLogo");
 const escudo = document.getElementById("escudo");
 
@@ -354,3 +370,16 @@ function iniciarTemporizador(){
 
 }
 
+function iniciarLiga(index){
+
+    ligaActual = index;
+    equipoActual = 0;
+    puntos = 0;
+
+    mezclar(ligas[ligaActual].equipos);
+
+    menuLigas.style.display = "none";
+    juego.style.display = "block";
+
+    cargarPregunta();
+}
