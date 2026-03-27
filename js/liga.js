@@ -12,7 +12,7 @@ const ligas = [
             {nombre:"Liverpool", imagen:"img/liverpool.jpg"},
             {nombre:"Tottenham hotspur", imagen:"img/tottenham.png"},
             {nombre:"Aston Villa", imagen:"img/astonvilla.png"},
-            {nombre:"Newcastle United", imagen:"img/newcastle.png"}
+            {nombre:"Newcastle United", imagen:"img/newcastle.png"},
             {nombre:"Leeds United", imagen:"img/leeds.png"},
             {nombre:"West Ham United", imagen:"img/westham.png"}
         ]
