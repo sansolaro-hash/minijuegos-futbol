@@ -7,7 +7,7 @@ const ligas = [
         equipos: [
             {nombre:"Arsenal", imagen:"img/arsenal.png"},
             {nombre:"Manchester United", imagen:"img/manchesterunited.png"},
-            {nombre:"Manchester City",imagen:"img/manchestercity.png"},
+            {nombre:"Manchester City", imagen:"img/manchestercity.png"},
             {nombre:"Chelsea", imagen:"img/chelsea.png"},
             {nombre:"Liverpool", imagen:"img/liverpool.jpg"},
             {nombre:"Tottenham hotspur", imagen:"img/tottenham.png"},
