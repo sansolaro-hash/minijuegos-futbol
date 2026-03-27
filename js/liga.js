@@ -7,7 +7,7 @@ const ligas = [
         equipos: [
             {nombre:"Arsenal", imagen:"img/arsenal.png"},
             {nombre:"Manchester United", imagen:"img/manchesterunited.png"},
-            {nombre:"Manchester City", imagen:"img/manchestercity.png"},
+            {nombre:"Manchester City",imagen:"img/manchestercity.png"},
             {nombre:"Chelsea", imagen:"img/chelsea.png"},
             {nombre:"Liverpool", imagen:"img/liverpool.jpg"},
             {nombre:"Tottenham hotspur", imagen:"img/tottenham.png"},
@@ -15,6 +15,7 @@ const ligas = [
             {nombre:"Newcastle United", imagen:"img/newcastle.png"},
             {nombre:"Leeds United", imagen:"img/leeds.png"},
             {nombre:"West Ham United", imagen:"img/westham.png"}
+
         ]
     },
     {
@@ -105,11 +106,11 @@ const ligas = [
         equipos:[
             {nombre:"Barcelona de Ecuador", imagen:"img/barcelonaecuador.png"},
             {nombre:"Emelec", imagen:"img/emelec.png"},
-            {nombre:"Independiente del Valle", imagen:"img/independientevalle.png"},
+            {nombre:"Independiente del Valle", imagen:"img/independientedelvalle.png"},
             {nombre:"Liga Universitaria de Quito", imagen:"img/ligadequito.png"}
         ]
     },
-     {
+    {
         nombre:"Saudi Pro League",
         imagen:"img/saudiproleague.png",
         equipos:[
@@ -259,23 +260,12 @@ function siguienteEquipo(){
         cargarPregunta();
 
     }else{
-
-        ligaActual++;
-        equipoActual = 0;
-
-        if(ligaActual < ligas.length){
-
+        
         document.getElementById("resultado").innerText =
-    "🏆 Liga completada: " + ligas[ligaActual - 1].nombre;
+        "🏆 Liga completada: " + ligas[ligaActual].nombre +
+        " | Puntos: " + puntos;
 
-    setTimeout(cargarPregunta, 1500);
-
-        }else{
-            
-            document.getElementById("resultado").innerText =
-            "🎮 Carrera completada: " + puntos + " puntos";
-
-    if(puntos > record){
+        if(puntos > record){
     
         record = puntos;
         localStorage.setItem("record", record);
@@ -283,41 +273,30 @@ function siguienteEquipo(){
         document.getElementById("resultado").innerText +=
         " 🎉 ¡Nuevo récord!";
 }
+        document.getElementById("record").innerText =
+        "🏆 Récord: " + record;
 
-document.getElementById("record").innerText =
-"🏆 Récord: " + record;
-
-            reiniciar.style.display = "block";
+        reiniciar.style.display = "block";
         }
-    }
+        op1.disabled = false;
+        op2.disabled = false;
+        op3.disabled = false;
+        op4.disabled = false;
 
-    op1.disabled = false;
-    op2.disabled = false;
-    op3.disabled = false;
-    op4.disabled = false;
-
-    op1.classList.remove("correcto", "incorrecto");
-    op2.classList.remove("correcto", "incorrecto");
-    op3.classList.remove("correcto", "incorrecto");
-    op4.classList.remove("correcto", "incorrecto");
+        op1.classList.remove("correcto", "incorrecto");
+        op2.classList.remove("correcto", "incorrecto");
+        op3.classList.remove("correcto", "incorrecto");
+        op4.classList.remove("correcto", "incorrecto");
 }
 
 reiniciar.onclick = function(){
 
-    ligaActual = 0;
-    equipoActual = 0;
-    puntos = 0;
-
-    mezclar(ligas);
-
-    ligas.forEach(liga => {
-        mezclar(liga.equipos);
-    });
+    juego.style.display = "none";
+    menuLigas.style.display = "block";
 
     document.getElementById("resultado").innerText = "";
-    reiniciar.style.display = "none";
 
-    cargarPregunta();
+    window.scrollTo(0,0);
 }
 
 function mezclar(array){
@@ -381,5 +360,8 @@ function iniciarLiga(index){
     menuLigas.style.display = "none";
     juego.style.display = "block";
 
+     window.scrollTo(0,0);
+
     cargarPregunta();
 }
+
