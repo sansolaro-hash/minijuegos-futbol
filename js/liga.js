@@ -13,7 +13,8 @@ const ligas = [
             {nombre:"Tottenham hotspur", imagen:"img/tottenham.png"},
             {nombre:"Aston Villa", imagen:"img/astonvilla.png"},
             {nombre:"Newcastle United", imagen:"img/newcastle.png"}
-
+            {nombre:"Leeds United", imagen:"img/leeds.png"},
+            {nombre:"West Ham United", imagen:"img/westham.png"}
         ]
     },
     {
@@ -60,6 +61,7 @@ const ligas = [
             {nombre:"Porto", imagen:"img/porto.png"},
             {nombre:"Sporting de Lisboa", imagen:"img/sporting.png"},
             {nombre:"Sporting de Braga", imagen:"img/braga.png"}
+            {nombre:"Vitoria de Guimaraes", imagen:"img/vitoria.png"}
         ]
     },
     {
@@ -70,7 +72,52 @@ const ligas = [
             {nombre:"Olympique de Marsella", imagen:"img/marsella.png"},
             {nombre:"Olympique de Lyon", imagen:"img/lyon.jpg"},
             {nombre:"Lille", imagen:"img/lille.png"}
+            {nombre:"Monaco", imagen:"img/monaco.png"},
+            {nombre:"Stade de Rennes", imagen:"img/rennes.png"}
         ]   
+    },
+    {
+        nombre:"Brasileirao",
+        imagen:"img/brasileirao.png",
+        equipos:[
+            {nombre:"Corinthians", imagen:"img/corinthians.png"},
+            {nombre:"Cruzeiro", imagen:"img/cruzeiro.png"},
+            {nombre:"Flamengo", imagen:"img/flamengo.png"},
+            {nombre:"Internacional", imagen:"img/internacional.png"},
+            {nombre:"Santos", imagen:"img/santos.png"}
+        ]
+    },
+    {
+        nombre:"Liga Profesional de Fútbol",
+        imagen:"img/ligaargentina.png",
+        equipos:[
+            {nombre:"Boca Juniors", imagen:"img/bocajuniors.png"},
+            {nombre:"Estudiantes de la Plata", imagen:"img/estudiantes.png"},
+            {nombre:"Independiente", imagen:"img/independiente.png"},
+            {nombre:"Rosario Central", imagen:"img/rosariocentral.png"},
+            {nombre:"River Plate", imagen:"img/riverplate.png"},
+            {nombre:"Racing Club", imagen:"img/racingclub.png"}
+        ]
+    },
+    {
+        nombre:"Liga Ecuabet",
+        imagen:"img/ligaecuabet.png",
+        equipos:[
+            {nombre:"Barcelona de Ecuador", imagen:"img/barcelonaecuador.png"},
+            {nombre:"Emelec", imagen:"img/emelec.png"},
+            {nombre:"Independiente del Valle", imagen:"img/independientedelvalle.png"},
+            {nombre:"Liga Universitaria de Quito", imagen:"img/ligadequito.png"}
+        ]
+    },
+     {
+        nombre:"Saudi Pro League",
+        imagen:"img/saudiproleague.png",
+        equipos:[
+            {nombre:"Al-Ahli", imagen:"img/alahli.png"},
+            {nombre:"Al-Nassr", imagen:"img/alnassr.png"},
+            {nombre:"Al-Ittihad", imagen:"img/alittihad.png"},
+            {nombre:"Al-Hilal", imagen:"img/alhilal.png"}
+        ]
     } 
  ];
 
