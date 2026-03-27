@@ -126,9 +126,6 @@ let ligaActual = 0;
 let equipoActual = 0;
 let puntos = 0;
 let tiempo = 7;
-if(tiempo < 2){
-    tiempo = 2;
-}
 let temporizador;
 let record = localStorage.getItem("record") || 0;
 document.getElementById("record").innerText =
@@ -142,7 +139,15 @@ ligas.forEach((liga, index) => {
 
     const boton = document.createElement("button");
 
-    boton.innerText = liga.nombre;
+    const img = document.createElement("img");
+    img.src = liga.imagen;
+    img.width = 80;
+
+    const texto = document.createElement("p");
+    texto.innerText = liga.nombre;
+
+    boton.appendChild(img);
+    boton.appendChild(texto);
 
     boton.onclick = () => iniciarLiga(index);
 
@@ -161,8 +166,6 @@ const reiniciar = document.getElementById("reiniciar");
 const progreso = document.getElementById("progreso");
 const sonidoCorrecto = new Audio("sonidos/correcto.mp3");
 const sonidoIncorrecto = new Audio("sonidos/incorrecto.mp3");
-
-mezclar(ligas);
 
 ligas.forEach(liga => {
     mezclar(liga.equipos);
