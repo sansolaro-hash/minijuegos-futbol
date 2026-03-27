@@ -125,8 +125,7 @@ const ligas = [
 let ligaActual = 0;
 let equipoActual = 0;
 let puntos = 0;
-let tiempo = 5 - ligaActual;
-
+let tiempo = 7;
 if(tiempo < 2){
     tiempo = 2;
 }
@@ -159,6 +158,7 @@ const op2 = document.getElementById("op2");
 const op3 = document.getElementById("op3");
 const op4 = document.getElementById("op4");
 const reiniciar = document.getElementById("reiniciar");
+const progreso = document.getElementById("progreso");
 const sonidoCorrecto = new Audio("sonidos/correcto.mp3");
 const sonidoIncorrecto = new Audio("sonidos/incorrecto.mp3");
 
@@ -168,11 +168,15 @@ ligas.forEach(liga => {
     mezclar(liga.equipos);
 });
 
-cargarPregunta();
-
 function cargarPregunta(){
 
     const equiposLiga = ligas[ligaActual].equipos;
+
+    progreso.innerText =
+    "⚽ Equipo " + (equipoActual + 1) +
+    " de " + equiposLiga.length +
+    " | 🏆 " + ligas[ligaActual].nombre;
+
     const correcta = equiposLiga[equipoActual].nombre;
     escudo.style.opacity = 0;
 
@@ -357,6 +361,8 @@ function iniciarLiga(index){
 
     mezclar(ligas[ligaActual].equipos);
 
+    reiniciar.style.display = "none";
+    
     menuLigas.style.display = "none";
     juego.style.display = "block";
 
@@ -364,4 +370,3 @@ function iniciarLiga(index){
 
     cargarPregunta();
 }
-
