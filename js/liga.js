@@ -105,7 +105,7 @@ const ligas = [
         equipos:[
             {nombre:"Barcelona de Ecuador", imagen:"img/barcelonaecuador.png"},
             {nombre:"Emelec", imagen:"img/emelec.png"},
-            {nombre:"Independiente del Valle", imagen:"img/independientedelvalle.png"},
+            {nombre:"Independiente del Valle", imagen:"img/independientevalle.png"},
             {nombre:"Liga Universitaria de Quito", imagen:"img/ligadequito.png"}
         ]
     },
