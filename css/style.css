@@ -2,19 +2,20 @@
    ESTILOS GENERALES
 ========================= */
 
-body{
+body {
 
-text-align:center;
+display: flex;
+flex-direction: column;
+
+align-items: center;
+justify-content: center;
+
+min-height: 100vh;
 
 background:#222;
-
 color:white;
 
 font-family:Arial;
-
-font-size: 18px;
-
-padding: 10px;
 
 }
 
@@ -81,32 +82,30 @@ margin-top: 40px;
 
 display: flex;
 flex-direction: column;
-gap: 20px;
 
 align-items: center;
+justify-content: center;
+
+gap: 15px;
 
 }
 
-button{
+.menu button {
 
 width: 90%;
 max-width: 300px;
 
 padding: 15px;
 
-margin: 10px auto;
+margin: 5px auto;
 
 font-size: 18px;
-
-cursor: pointer;
-
-display: block;
 
 border-radius: 10px;
 
 }
 
-.button:hover {
+.menu button:hover {
 
 background-color: darkblue;
 transform: scale(1.05);
@@ -115,20 +114,15 @@ transform: scale(1.05);
 
 .volver {
 
-display:inline-block;
-
-margin-top:20px;
-
-padding:8px 15px;
-
-background-color:gray;
-
-color:white;
-
-text-decoration:none;
-
-border-radius:8px;
-
+position: absolute;
+top: 10px;
+left: 10px;
+padding: 8px 12px;
+font-size: 14px;
+border-radius: 8px;
+background: #333;
+color: white;
+cursor: pointer;
 }
 
 .volver:hover {
@@ -289,6 +283,19 @@ transition: transform 0.3s, opacity 0.3s;
       background: red !important;
     }
 
+    .pasapalabra {
+
+    background: orange !important;
+
+   }
+
+   .activa {
+
+   border: 3px solid white;
+
+   transform: scale(1.2);
+
+   }
     /* BOTONES VAR */
 
 #verdadero,
@@ -326,6 +333,155 @@ color: white;
 
 }
 
+/* =========================
+   BOLOS FUTBOLEROS
+========================= */
+#pregunta {
+    font-size: 24px;
+    padding: 20px;
+    background: #044d1a;
+}
+
+#niveles {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 15px;
+}
+
+button {
+padding: 10px 15px;
+margin: 5px;
+font-size: 16px;
+cursor: pointer;
+border-radius: 10px;
+border: none;
+}
+
+#pinos {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+padding: 30px;
+}
+
+.fila {
+display: flex;
+justify-content: center;
+gap: 15px;
+}
+
+.pino {
+    width: 100px;
+    height: 140px;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.4s;
+}
+
+.pino img {
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+.caido-izq {
+transform: rotate(-90deg) translateX(-40px);
+opacity: 0.6;
+pointer-events: none;
+transition: transform 0.5s ease-out;
+}
+
+.caido-der {
+transform: rotate(90deg) translateX(40px);
+opacity: 0.6;
+pointer-events: none;
+transition: transform 0.5s ease-out;
+}
+
+#mensaje {
+    font-size: 26px;
+    margin-bottom: 20px;
+    height: 30px;
+}
+
+#contador {
+font-size: 20px;
+margin-top: 10px;
+font-weight: bold;
+color: #ffd700;
+}
+
+#puntaje {
+font-size: 22px;
+margin-top: 5px;
+font-weight: bold;
+color: #00ffff;
+}
+
+#tiempo {
+font-size: 22px;
+margin-top: 5px;
+font-weight: bold;
+color: #ff4444;
+}
+
+#record {
+font-size: 20px;
+font-weight: bold;
+color: #00ff88;
+}
+
+#volver {
+position: absolute;
+top: 10px;
+left: 10px;
+padding: 8px 12px;
+font-size: 14px;
+border-radius: 8px;
+background: #333;
+color: white;
+cursor: pointer;
+}
+
+#titulo {
+text-align: center;
+font-size: 36px;
+margin-top: 40px;
+color: #ffd700;
+text-shadow: 2px 2px 4px black;
+}
+
+#instrucciones {
+max-width: 600px;
+margin: 10px auto;
+font-size: 18px;
+background: rgba(0,0,0,0.3);
+padding: 10px;
+border-radius: 10px;
+}
+
+#niveles button {
+
+padding: 12px 18px;
+font-size: 18px;
+border-radius: 12px;
+border: none;
+cursor: pointer;
+transition: transform 0.2s;
+
+}
+
+#niveles button:hover {
+
+transform: scale(1.1);
+
+}
 /* =========================
    BOTÓN REINICIAR
 ========================= */
