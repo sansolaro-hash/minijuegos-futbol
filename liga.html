@@ -5,20 +5,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modo Carrera</title>
+<title>Modo Liga</title>
 
 <link rel="stylesheet" href="css/style.css">
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2c3e50">
-
 </head>
 
 <body>
 
-<h1>Liga</h1>
+<h1>🏆 Liga</h1>
 
-<div id="menuLigas"></div>
+<div id="menuLigas">
 
 <h2>Elegí una liga</h2>
 
@@ -29,11 +28,13 @@
 <div id="juego" style="display:none;">
 
 <img id="ligaLogo" width="150">
-   
+
 <h2>¿De qué equipo es este escudo?</h2>
 
+<p id="progreso"></p> <!-- NUEVO -->
+
 <img id="escudo" width="150">
-    
+
 <br><br>
 
 <button id="op1"></button>
@@ -45,17 +46,21 @@
 <p id="tiempo"></p>
 <p id="record"></p>
 
-<button id="reiniciar" style="display:none">Volver al menú</button>
+<button id="reiniciar" style="display:none">
+🏠 Volver al menú
+</button>
 
 </div>
 
-<a href="index.html" class="volver">⬅️ Volver al menú principal</a>
+<a href="index.html" class="volver">
+⬅️ Volver al menú principal
+</a>
 
 <script src="js/liga.js"></script>
 
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
+ navigator.serviceWorker.register("service-worker.js");
 }
 </script>
 
