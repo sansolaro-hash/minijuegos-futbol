@@ -61,7 +61,7 @@ const preguntas = [
         incorrectas: [
             "Real Madrid",
             "River Plate",
-            "Argentinos Juniors"
+            "Independiente"
         ]
     },
     {
